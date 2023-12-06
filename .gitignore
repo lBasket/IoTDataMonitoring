@@ -1,0 +1,9 @@
+env*
+env/*
+env
+kafka*
+mongodb*
+notes.txt
+generate_data/device_data
+generate_data/device_data/*
+generate_data/device_data/
