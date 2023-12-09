@@ -8,7 +8,7 @@ import datetime as dt
 
 class Viewer():
     '''
-    a
+    Object for viewing data
     '''
     def __init__(self, mongo):
         self.mongodb = mongo
@@ -130,14 +130,13 @@ class Viewer():
 
     def create_plot(self, variable='signal', dates_given=(dt.datetime(2022, 1, 1), dt.datetime(2022, 2, 1)), ids=[0, 1, 2, 3, 4], window=10):
         '''
-        1
+        Create a plot using the df currently in the mongodb object.
+        Refresh it using given params first.
+
+        Then line chart.
         '''
         print(f'Creating a plot for {variable}, with dates {dates_given} and ids {ids}')
 
-        # Check if dates change and only requery if they did
-        #dates_given = dt.datetime.combine(dates_given, dt.datetime.min.time())
-
-        #print(dates_given)
         self.update_df(dates_given, ids)
         print('df updated')
 
@@ -157,6 +156,11 @@ class Viewer():
         '''
 
     def create_table(self, table_name=''):
+        '''
+        Creates a table object from the selected radio button options.
+
+        Decodes the radio options that are human readable to keys in the dictionary
+        '''
         print(f'Creating table for {table_name}')
 
         table_name = {
@@ -175,10 +179,13 @@ class Viewer():
 
 
     def plot_it(self):
+        '''
+        creates plots/charts/widgets/everything, main driver function
+        '''
         available_columns = [c for c in self.mongodb.df.columns if c not in ['_id', 'id', 'Unnamed: 0', 'ts']]
         available_ids = list(range(0, 150))
 
-        pn.extension()
+        pn.extension(design='material')
 
         ############ Set up widgets
 

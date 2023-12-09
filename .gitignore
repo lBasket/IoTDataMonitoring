@@ -7,3 +7,9 @@ notes.txt
 generate_data/device_data
 generate_data/device_data/*
 generate_data/device_data/
+generate_data/__pycache__
+generate_data/__pycache__/
+generate_data/__pycache__/*
+view_data/__pycache__
+view_data/__pycache__/
+view_data/__pycache__/*
